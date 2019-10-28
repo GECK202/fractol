@@ -52,7 +52,7 @@ void	*calc_mand(void *thread_arg)
 				gn=floor(fabs(sin(grad+M_PI/10))*255);
 				bl=floor(fabs(sin(grad+M_PI/5))*255);
 				color = (rd << 16) + (gn << 8) + bl;
-				if (k % 2 == 0)
+				if (tdata->type_color == 1 && !(k % 2))
 					color = 0xffffff - color;
 			}
 			else
@@ -75,6 +75,7 @@ void		init_thread(t_param *p)
 		p->tdata[i].di = p->di;
 		p->tdata[i].scale = p->scale;
 		p->tdata[i].img_w = p->img_w;
+		p->tdata[i].type_color = p->type_color;
 		pthread_create(&(p->pthread[i]), NULL, calc_mand, &(p->tdata[i]));
 	}
 }

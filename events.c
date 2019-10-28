@@ -6,7 +6,7 @@
 /*   By: vkaron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:44:48 by vkaron            #+#    #+#             */
-/*   Updated: 2019/10/28 17:00:33 by vkaron           ###   ########.fr       */
+/*   Updated: 2019/10/28 17:27:34 by vkaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int		close_win(t_param *p)
 
 int		key_down_event(int key, t_param *p)
 {
-
+	if (key == 49)
+	{
+		++(p->type_color);
+		if (p->type_color == 2)
+			p->type_color = 0;
+	}
 	if (key == 53)
 		close_win(p);
 	p->event = 1;
